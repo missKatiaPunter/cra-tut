@@ -4,8 +4,11 @@ import { Switch, Route } from 'react-router-dom';
 const App = () => {
   return (
     <Switch>
-      <Route path="/">
+      <Route exact path="/">
         Hello. This is home page.
+      </Route>
+      <Route exact path="/starred">
+        This is starred page.
       </Route>
     </Switch>
   );
