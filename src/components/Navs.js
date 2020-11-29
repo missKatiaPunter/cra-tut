@@ -10,7 +10,15 @@ const Navs = () => {
     return (
         <div>
             <ul>
-                { LINKS.map(item => <li><Link to={ item.to }>{ item.text }</Link></li>) }
+                { LINKS.map((item, ind) => {
+                    return (
+                        <li key={`nav_key_${ind}`}>
+                            <Link to={ item.to }>
+                                { item.text }
+                            </Link>
+                        </li>
+                    )}
+                )}
             </ul>
         </div>
     )
