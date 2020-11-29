@@ -1,0 +1,7 @@
+sudo: false
+language: node_js
+before_install:
+  - yarn add codecov
+script:
+  - jest --ci --coverage && codecov
+  - codecov
