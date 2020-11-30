@@ -9,6 +9,14 @@ const Home = () => {
         setSearchInputBoxValue(value);
     };
 
+    const searchButtonHandler = () => {
+        fetch(`http://api.tvmaze.com/search/shows?q=${searchInputBoxValue}`)
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+        });
+    };
+
     return(
         <MainPageLayout>
             <label htmlFor="search-input">Search</label>
@@ -16,8 +24,14 @@ const Home = () => {
                 id="search-input"
                 type="text"
                 placeholder="Enter search term"
-                onChange={handleSearchChange}
+                onChange={ handleSearchChange }
+                value={ searchInputBoxValue }
             />
+            <button
+                onClick={searchButtonHandler}
+            >
+                Search
+            </button>
         </MainPageLayout>
     )
 };
