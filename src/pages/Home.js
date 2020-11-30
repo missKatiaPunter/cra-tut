@@ -17,6 +17,12 @@ const Home = () => {
         });
     };
 
+    const handleKeyUp = ({ keyCode }) => {
+        if (keyCode === 13) {
+            searchButtonHandler();
+        }
+      };
+
     return(
         <MainPageLayout>
             <label htmlFor="search-input">Search</label>
@@ -26,6 +32,7 @@ const Home = () => {
                 placeholder="Enter search term"
                 onChange={ handleSearchChange }
                 value={ searchInputBoxValue }
+                onKeyUp={ handleKeyUp }
             />
             <button
                 onClick={searchButtonHandler}
