@@ -4,6 +4,7 @@ import MainPageLayout from '../components/MainPageLayout';
 const Home = () => {
 
     const [searchInputBoxValue, setSearchInputBoxValue] = useState('');
+    const [searchResults, setsearchResults] = useState(null);
 
     const handleSearchChange = ( { target: { value }}) => {
         setSearchInputBoxValue(value);
@@ -13,7 +14,7 @@ const Home = () => {
         fetch(`http://api.tvmaze.com/search/shows?q=${searchInputBoxValue}`)
         .then(res => res.json())
         .then(res => {
-            console.log(res)
+            setsearchResults(res);
         });
     };
 
@@ -21,7 +22,7 @@ const Home = () => {
         if (keyCode === 13) {
             searchButtonHandler();
         }
-      };
+    };
 
     return(
         <MainPageLayout>
