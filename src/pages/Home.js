@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MainPageLayout from '../components/MainPageLayout';
+import { getData } from '../utils/config';
 
 const Home = () => {
 
@@ -11,11 +12,8 @@ const Home = () => {
     };
 
     const searchButtonHandler = () => {
-        fetch(`http://api.tvmaze.com/search/shows?q=${searchInputBoxValue}`)
-        .then(res => res.json())
-        .then(res => {
-            setSearchResults(res);
-        });
+        getData(`/search/shows?q=${searchInputBoxValue}`)
+        .then(res => setSearchResults(res))
     };
 
     const handleKeyUp = ({ keyCode }) => {
