@@ -4,7 +4,7 @@ import MainPageLayout from '../components/MainPageLayout';
 const Home = () => {
 
     const [searchInputBoxValue, setSearchInputBoxValue] = useState('');
-    const [searchResults, setsearchResults] = useState(null);
+    const [searchResults, setSearchResults] = useState(null);
 
     const handleSearchChange = ( { target: { value }}) => {
         setSearchInputBoxValue(value);
@@ -14,7 +14,7 @@ const Home = () => {
         fetch(`http://api.tvmaze.com/search/shows?q=${searchInputBoxValue}`)
         .then(res => res.json())
         .then(res => {
-            setsearchResults(res);
+            setSearchResults(res);
         });
     };
 
@@ -23,6 +23,13 @@ const Home = () => {
             searchButtonHandler();
         }
     };
+
+    const renderSearchResults = () => {
+        console.log(searchResults);
+        if (searchResults && searchResults.length === 0){
+            return <div>No results</div>;
+        }
+    }
 
     return(
         <MainPageLayout>
@@ -40,6 +47,7 @@ const Home = () => {
             >
                 Search
             </button>
+            { renderSearchResults() }
         </MainPageLayout>
     )
 };
