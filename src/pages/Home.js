@@ -23,10 +23,20 @@ const Home = () => {
     };
 
     const renderSearchResults = () => {
-        console.log(searchResults);
-        if (searchResults && searchResults.length === 0){
+        if(searchResults && searchResults.length === 0){
             return <div>No results</div>;
         }
+        if(searchResults && searchResults.length > 0) {
+            return (
+                <div>
+                    { searchResults.map(item => {
+                        const { id, name } = item.show;
+                        return <div key={id}>{ name }</div>;
+                    })
+                }
+                </div>
+            )};
+        return null;
     }
 
     return(
