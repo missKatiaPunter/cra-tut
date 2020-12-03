@@ -12,7 +12,7 @@ describe('renders home as expected', () => {
     });
     it('should render 2 radio buttons', () => {
       render(<Home />, { wrapper: MemoryRouter });
-      const results = screen.queryByTestId('movieList');
+      const results = screen.queryByTestId('peep-show-buttons');
     expect(results.childNodes).toHaveLength(2);
     })
   });
