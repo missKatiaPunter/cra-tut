@@ -6,6 +6,7 @@ const Home = () => {
 
     const [searchInputBoxValue, setSearchInputBoxValue] = useState('');
     const [searchResults, setSearchResults] = useState(null);
+    const [peopleOrShows, setPeopleOrShows] = useState('people');
 
     const handleSearchChange = ( { target: { value }}) => {
         setSearchInputBoxValue(value);
@@ -50,8 +51,16 @@ const Home = () => {
                 value={ searchInputBoxValue }
                 onKeyUp={ handleKeyUp }
             />
+            <div data-testid="peep-show-buttons">
+                <label htmlFor="search-by-people">Search By People
+                    <input type="radio" id="search-by-people" on/>
+                </label>
+                <label htmlFor="search-by-shows">Search By Shows
+                    <input type="radio" id="search-by-shows"/>
+                </label>
+            </div>
             <button
-                onClick={searchButtonHandler}
+                onClick={ searchButtonHandler }
             >
                 Search
             </button>

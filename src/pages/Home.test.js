@@ -10,6 +10,11 @@ describe('renders home as expected', () => {
       const label = screen.getByLabelText('Search')
       expect(label).toBeDefined();
     });
+    it('should render 2 radio buttons', () => {
+      render(<Home />, { wrapper: MemoryRouter });
+      const results = screen.queryByTestId('movieList');
+    expect(results.childNodes).toHaveLength(2);
+    })
   });
 
 
